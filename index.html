@@ -5,7 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Website 🚀</title>
 
-    <style>
+    <style>section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#home,
+#about {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 90px 20px 40px;
+}
+
+.container,
+.about-box {
+    width: 100%;
+    max-width: 650px;
+
         * {
             box-sizing: border-box;
             scroll-behavior: smooth;
@@ -175,7 +195,35 @@
         }
 
         /* MOBILE */
-        @media (max-width: 600px) {
+        @media\@media (max-width: 600px) {
+    nav {
+        padding: 15px;
+    }
+
+    nav h2 {
+        font-size: 18px;
+    }
+
+    nav a {
+        margin-left: 10px;
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    p {
+        font-size: 17px;
+    }
+
+    .container,
+    .about-box {
+        width: 100%;
+        padding: 30px 20px;
+    }
+}
+ (max-width: 600px) {
             nav {
                 padding: 15px;
             }
