@@ -365,7 +365,24 @@
             background: #ff9900;
             transform: scale(1.05);
         }
-    </style>
+   <style>
+@media (max-width: 600px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    max-width: 360px;
+    box-sizing: border-box;
+  }
+}
+</style>
 </head>
 
 <body>
