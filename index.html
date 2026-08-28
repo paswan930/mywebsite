@@ -1,41 +1,66 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Website</title>
+    <title>My Website 🚀</title>
 
     <style>
         body {
+            margin: 0;
             font-family: Arial, sans-serif;
             text-align: center;
-            padding: 50px 20px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 20px;
         }
 
         button {
-            padding: 12px 20px;
-            font-size: 18px;
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 30px;
+            background: #ffcc00;
+            color: #222;
             cursor: pointer;
+        }
+
+        button:hover {
+            background: #ff9900;
+            transform: scale(1.05);
         }
     </style>
 </head>
 
 <body>
 
-    <h1>Welcome to My Website 🚀</h1>
-    <p>This website was created using Termux.</p>
+    <div class="container">
+        <h1>Welcome to My Website 🚀</h1>
 
-    <button onclick="sayHello()">Click Me</button>
+        <p>This website was created using Termux.</p>
 
-    <p id="message"></p>
-
-    <script>
-        function sayHello() {
-            document.getElementById("message").innerText =
-                "Hello! Website is working 🎉";
-        }
-    </script>
+        <button onclick="alert('Hello! 👋 Welcome to my website!')">
+            Click Me
+        </button>
+    </div>
 
 </body>
 </html>
