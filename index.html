@@ -1,30 +1,13 @@
-\<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>My Website 🚀</title>
 
-    <style>section {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-#home,
-#about {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 90px 20px 40px;
-}
-
-.container,
-.about-box {
-    width: 100%;
-    max-width: 650px;
+    <style>
 
         * {
             box-sizing: border-box;
@@ -36,7 +19,6 @@
             font-family: Arial, sans-serif;
             color: white;
 
-            /* Moving gradient */
             background: linear-gradient(
                 -45deg,
                 #6a11cb,
@@ -44,31 +26,41 @@
                 #00c6ff,
                 #7b2ff7
             );
+
             background-size: 400% 400%;
             animation: gradientMove 10s ease infinite;
         }
 
         @keyframes gradientMove {
+
             0% {
                 background-position: 0% 50%;
             }
+
             50% {
                 background-position: 100% 50%;
             }
+
             100% {
                 background-position: 0% 50%;
             }
+
         }
 
+
         /* NAVBAR */
+
         nav {
             position: fixed;
             top: 0;
             left: 0;
+
             width: 100%;
+
             padding: 15px 25px;
 
             background: rgba(0, 0, 0, 0.25);
+
             backdrop-filter: blur(10px);
 
             display: flex;
@@ -80,12 +72,15 @@
 
         nav h2 {
             margin: 0;
+            font-size: 22px;
         }
 
         nav a {
             color: white;
             text-decoration: none;
+
             margin-left: 20px;
+
             font-weight: bold;
         }
 
@@ -93,27 +88,38 @@
             color: #ffcc00;
         }
 
-        /* HOME */
-        #home {
+
+        /* SECTIONS */
+
+        section {
+            width: 100%;
             min-height: 100vh;
 
             display: flex;
             justify-content: center;
             align-items: center;
 
+            padding: 100px 20px 50px;
+
             text-align: center;
-            padding: 80px 20px 40px;
         }
 
+
+        /* HOME CARD */
+
         .container {
+            width: 100%;
+            max-width: 650px;
+
             background: rgba(255, 255, 255, 0.15);
+
             padding: 45px 30px;
+
             border-radius: 25px;
 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
 
-            max-width: 650px;
+            backdrop-filter: blur(10px);
         }
 
         h1 {
@@ -126,9 +132,12 @@
             line-height: 1.6;
         }
 
+
         /* BUTTON */
+
         button {
             margin-top: 20px;
+
             padding: 15px 35px;
 
             font-size: 20px;
@@ -143,15 +152,19 @@
             cursor: pointer;
 
             animation: pulse 1.5s infinite;
+
             transition: 0.3s;
         }
 
         button:hover {
             transform: scale(1.12);
-            box-shadow: 0 0 30px rgba(255, 204, 0, 0.9);
+
+            box-shadow:
+                0 0 30px rgba(255, 204, 0, 0.9);
         }
 
         @keyframes pulse {
+
             0% {
                 transform: scale(1);
             }
@@ -163,30 +176,26 @@
             100% {
                 transform: scale(1);
             }
+
         }
+
 
         /* ABOUT */
-        #about {
-            min-height: 100vh;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            padding: 80px 20px;
-            text-align: center;
-        }
 
         .about-box {
+            width: 100%;
             max-width: 650px;
 
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
+
             padding: 40px 30px;
 
             border-radius: 25px;
+
             backdrop-filter: blur(10px);
 
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.3);
         }
 
         .about-box h2 {
@@ -194,42 +203,17 @@
             margin-bottom: 20px;
         }
 
+
         /* MOBILE */
-        @media\@media (max-width: 600px) {
-    nav {
-        padding: 15px;
-    }
 
-    nav h2 {
-        font-size: 18px;
-    }
+        @media (max-width: 600px) {
 
-    nav a {
-        margin-left: 10px;
-        font-size: 14px;
-    }
-
-    h1 {
-        font-size: 32px;
-    }
-
-    p {
-        font-size: 17px;
-    }
-
-    .container,
-    .about-box {
-        width: 100%;
-        padding: 30px 20px;
-    }
-}
- (max-width: 600px) {
             nav {
-                padding: 15px;
+                padding: 14px 15px;
             }
 
             nav h2 {
-                font-size: 20px;
+                font-size: 17px;
             }
 
             nav a {
@@ -237,41 +221,73 @@
                 font-size: 14px;
             }
 
+            section {
+                padding: 90px 15px 40px;
+            }
+
+            .container,
+            .about-box {
+                width: 100%;
+                padding: 30px 20px;
+            }
+
             h1 {
                 font-size: 32px;
+            }
+
+            .about-box h2 {
+                font-size: 30px;
             }
 
             p {
                 font-size: 17px;
             }
 
-            .container,
-            .about-box {
-                padding: 30px 20px;
+            button {
+                font-size: 18px;
+                padding: 14px 28px;
             }
+
+            body {
+                overflow-x: hidden;
+            }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
     <!-- NAVBAR -->
+
     <nav>
+
         <h2>🚀 My Website</h2>
 
         <div>
+
             <a href="#home">Home</a>
+
             <a href="#about">About</a>
+
         </div>
+
     </nav>
 
 
     <!-- HOME -->
+
     <section id="home">
 
         <div class="container">
 
-            <h1>Welcome to My Website 🚀</h1>
+            <h1>
+                Welcome to My Website 🚀
+            </h1>
 
             <p>
                 This website was created using Termux.
@@ -287,16 +303,19 @@
 
 
     <!-- ABOUT -->
+
     <section id="about">
 
         <div class="about-box">
 
-            <h2>About Me 👋</h2>
+            <h2>
+                About Me 👋
+            </h2>
 
             <p>
-                Hello! I'm learning web development and
-                building my first website using HTML, CSS
-                and JavaScript.
+                Hello! I'm learning web development
+                and building my first website using
+                HTML, CSS and JavaScript.
             </p>
 
             <p>
@@ -309,93 +328,18 @@
 
 
     <script>
+
         function showMessage() {
-            alert("Hello! 👋 Welcome to my website 🚀");
+
+            alert(
+                "Hello! 👋 Welcome to my website 🚀"
+            );
+
         }
+
     </script>
 
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>My Website 🚀</title>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .container {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        h1 {
-            font-size: 45px;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 20px;
-        }
-
-        button {
-            margin-top: 20px;
-            padding: 15px 30px;
-            font-size: 20px;
-            border: none;
-            border-radius: 30px;
-            background: #ffcc00;
-            color: #222;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #ff9900;
-            transform: scale(1.05);
-        }
-   <style>
-@media (max-width: 600px) {
-  body {
-    overflow-x: hidden;
-  }
-
-  .cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card {
-    width: 90%;
-    max-width: 360px;
-    box-sizing: border-box;
-  }
-}
-</style>
-</head>
-
-<body>
-
-    <div class="container">
-        <h1>Welcome to My Website 🚀</h1>
-
-        <p>This website was created using Termux.</p>
-
-        <button onclick="alert('Hello! 👋 Welcome to my website!')">
-            Click Me
-        </button>
-    </div>
 
 </body>
+
 </html>
