@@ -11,7 +11,42 @@
     <title>Paswan Dev | Web Developer 🚀</title>
 
     <style>
+.contact-box form {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto 0;
+}
 
+.contact-box input,
+.contact-box textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 12px;
+
+    background: rgba(0,0,0,.25);
+    color: white;
+
+    font-size: 16px;
+    outline: none;
+}
+
+.contact-box textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.contact-box input::placeholder,
+.contact-box textarea::placeholder {
+    color: #cbd4ff;
+}
+
+.contact-button {
+    border: none;
+    cursor: pointer;
+}
         /* =========================
            BASIC
         ========================= */
@@ -899,18 +934,41 @@
         </h2>
 
         <p>
-            Want to get in touch? I'd love to
-            hear from you!
+            Have a project idea or want to say hello?
+            Send me a message!
         </p>
 
-        <!-- APNA EMAIL YAHAN LIKHNA -->
-
-        <a
-            href="mailto:YOUR_EMAIL@gmail.com"
-            class="contact-button"
+        <form
+            action="mailto:vikashkumardh930@gmail.com"
+            method="post"
+            enctype="text/plain"
         >
-            ✉️ Send Me an Email
-        </a>
+
+            <input
+                type="text"
+                name="Name"
+                placeholder="Your Name"
+                required
+            >
+
+            <input
+                type="email"
+                name="Email"
+                placeholder="Your Email"
+                required
+            >
+
+            <textarea
+                name="Message"
+                placeholder="Write your message..."
+                required
+            ></textarea>
+
+            <button type="submit" class="contact-button">
+                🚀 Send Message
+            </button>
+
+        </form>
 
     </div>
 
