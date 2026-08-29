@@ -1154,6 +1154,63 @@ footer p {
         padding: 16px;
     }
 }
+/* CONTACT */
+
+#contact {
+    width: 100%;
+    min-height: 60vh;
+    padding: 80px 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+.contact-box {
+    width: 100%;
+    max-width: 650px;
+
+    padding: 40px 25px;
+
+    background: rgba(255,255,255,.10);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 22px;
+
+    backdrop-filter: blur(10px);
+}
+
+.contact-box p {
+    color: #e4e9ff;
+    line-height: 1.6;
+}
+
+.contact-button {
+    display: inline-block;
+
+    margin-top: 15px;
+    padding: 14px 25px;
+
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+
+    border-radius: 25px;
+
+    background: linear-gradient(
+        90deg,
+        #00aaff,
+        #c000ff
+    );
+
+    transition: .3s;
+}
+
+.contact-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(0,200,255,.5);
+}
     </style>
 
 </head>
@@ -1829,55 +1886,28 @@ footer p {
      CONTACT
 ========================= -->
 
+<!-- CONTACT -->
 <section id="contact">
 
-    <div class="card contact-box">
+    <div class="contact-box">
 
-        <h2 class="section-title">
-            📩 Contact Me
-        </h2>
+        <h2 class="section-title">📩 Contact Me</h2>
 
         <p>
-            Have a project idea or want to say hello?
-            Send me a message!
+            Have a project idea or want to get in touch?
+            Send me an email.
         </p>
 
-        <form
-            action="mailto:vikashkumardh930@gmail.com"
-            method="post"
-            enctype="text/plain"
+        <a
+            href="mailto:vikashkumardh930@gmail.com?subject=Website%20Project"
+            class="contact-button"
         >
-
-            <input
-                type="text"
-                name="Name"
-                placeholder="Your Name"
-                required
-            >
-
-            <input
-                type="email"
-                name="Email"
-                placeholder="Your Email"
-                required
-            >
-
-            <textarea
-                name="Message"
-                placeholder="Write your message..."
-                required
-            ></textarea>
-
-            <button type="submit" class="contact-button">
-                🚀 Send Message
-            </button>
-
-        </form>
+            ✉️ Email Me
+        </a>
 
     </div>
 
 </section>
-
 
 <!-- =========================
      FOOTER
