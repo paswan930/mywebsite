@@ -174,17 +174,104 @@
             }
 
             100% {
-                transform: scale(1);
-            }
+                transform: scale(1);<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Portfolio 🚀</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
 
-        /* ABOUT */
+            background: linear-gradient(
+                -45deg,
+                #6a11cb,
+                #2575fc,
+                #00c6ff,
+                #7b2ff7
+            );
 
-        .about-box {
+            background-size: 400% 400%;
+            animation: gradientMove 10s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            max-width: 650px;
+
+            padding: 15px 25px;
+
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            z-index: 1000;
+        }
+
+        nav h2 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffcc00;
+        }
+
+        /* SECTIONS */
+
+        section {
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 100px 20px 50px;
+
+            text-align: center;
+        }
+
+        /* CARDS */
+
+        .container,
+        .about-box,
+        .skills-box,
+        .projects-box {
+            width: 100%;
+            max-width: 800px;
 
             background: rgba(255, 255, 255, 0.15);
 
@@ -198,18 +285,122 @@
                 0 15px 40px rgba(0, 0, 0, 0.3);
         }
 
-        .about-box h2 {
-            font-size: 38px;
-            margin-bottom: 20px;
+        h1 {
+            font-size: 45px;
         }
 
+        h2 {
+            font-size: 38px;
+        }
+
+        p {
+            font-size: 19px;
+            line-height: 1.6;
+        }
+
+        /* BUTTON */
+
+        button {
+            margin-top: 20px;
+
+            padding: 15px 35px;
+
+            font-size: 20px;
+            font-weight: bold;
+
+            border: none;
+            border-radius: 30px;
+
+            background: #ffcc00;
+            color: #222;
+
+            cursor: pointer;
+
+            animation: pulse 1.5s infinite;
+
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.12);
+
+            box-shadow:
+                0 0 30px rgba(255, 204, 0, 0.9);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+            100% { transform: scale(1); }
+        }
+
+        /* SKILLS */
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+
+            margin-top: 25px;
+        }
+
+        .skill {
+            padding: 15px 22px;
+
+            background: rgba(0, 0, 0, 0.25);
+
+            border-radius: 15px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        /* PROJECTS */
+
+        .projects {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            gap: 20px;
+
+            margin-top: 25px;
+        }
+
+        .project {
+            width: 220px;
+
+            padding: 25px 15px;
+
+            background: rgba(0, 0, 0, 0.25);
+
+            border-radius: 18px;
+
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .project h3 {
+            font-size: 22px;
+        }
 
         /* MOBILE */
 
         @media (max-width: 600px) {
 
             nav {
-                padding: 14px 15px;
+                padding: 14px 12px;
             }
 
             nav h2 {
@@ -217,8 +408,8 @@
             }
 
             nav a {
-                margin-left: 10px;
-                font-size: 14px;
+                margin-left: 8px;
+                font-size: 13px;
             }
 
             section {
@@ -226,16 +417,18 @@
             }
 
             .container,
-            .about-box {
+            .about-box,
+            .skills-box,
+            .projects-box {
                 width: 100%;
-                padding: 30px 20px;
+                padding: 30px 18px;
             }
 
             h1 {
                 font-size: 32px;
             }
 
-            .about-box h2 {
+            h2 {
                 font-size: 30px;
             }
 
@@ -243,36 +436,41 @@
                 font-size: 17px;
             }
 
-            button {
-                font-size: 18px;
-                padding: 14px 28px;
+            .skills,
+            .projects {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .skill,
+            .project {
+                width: 90%;
+                max-width: 350px;
             }
 
             body {
                 overflow-x: hidden;
             }
-
         }
 
     </style>
 
 </head>
 
-
 <body>
-
 
     <!-- NAVBAR -->
 
     <nav>
 
-        <h2>🚀 My Website</h2>
+        <h2>🚀 My Portfolio</h2>
 
         <div>
 
             <a href="#home">Home</a>
-
             <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
 
         </div>
 
@@ -286,15 +484,16 @@
         <div class="container">
 
             <h1>
-                Welcome to My Website 🚀
+                Welcome to My Portfolio 🚀
             </h1>
 
             <p>
-                This website was created using Termux.
+                Hello! I'm learning web development
+                and building awesome websites.
             </p>
 
             <button onclick="showMessage()">
-                Click Me ✨
+                Say Hello 👋
             </button>
 
         </div>
@@ -308,13 +507,10 @@
 
         <div class="about-box">
 
-            <h2>
-                About Me 👋
-            </h2>
+            <h2>About Me 👨‍💻</h2>
 
             <p>
-                Hello! I'm learning web development
-                and building my first website using
+                I'm a beginner web developer learning
                 HTML, CSS and JavaScript.
             </p>
 
@@ -327,18 +523,106 @@
     </section>
 
 
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <div class="skills-box">
+
+            <h2>My Skills 💻</h2>
+
+            <div class="skills">
+
+                <div class="skill">
+                    🌐 HTML
+                </div>
+
+                <div class="skill">
+                    🎨 CSS
+                </div>
+
+                <div class="skill">
+                    ⚡ JavaScript
+                </div>
+
+                <div class="skill">
+                    📱 Responsive Design
+                </div>
+
+                <div class="skill">
+                    🐙 Git & GitHub
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <div class="projects-box">
+
+            <h2>My Projects 🚀</h2>
+
+            <div class="projects">
+
+                <div class="project">
+
+                    <h3>🌐 My Website</h3>
+
+                    <p>
+                        My first website created
+                        using HTML, CSS and JavaScript.
+                    </p>
+
+                </div>
+
+
+                <div class="project">
+
+                    <h3>🧮 Calculator</h3>
+
+                    <p>
+                        A simple calculator project
+                        I'm planning to build.
+                    </p>
+
+                </div>
+
+
+                <div class="project">
+
+                    <h3>🎯 Future Project</h3>
+
+                    <p>
+                        More exciting projects
+                        coming soon!
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
     <script>
 
         function showMessage() {
 
             alert(
-                "Hello! 👋 Welcome to my website 🚀"
+                "Hello! 👋 Thanks for visiting my portfolio!"
             );
 
         }
 
     </script>
-
 
 </body>
 
