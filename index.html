@@ -11,7 +11,51 @@
 
     <title>Paswan Dev | Web Developer 🚀</title>
 
-    <style>.project-buttons {
+    <style> 
+.hire-box {
+    width: 100%;
+    max-width: 850px;
+    padding: 45px 30px;
+    text-align: center;
+}
+
+.hire-icon {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.hire-box p {
+    max-width: 650px;
+    margin: 0 auto 25px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #e3e8ff;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 650px;
+    margin: 25px auto;
+}
+
+.services div {
+    padding: 15px;
+    background: rgba(255,255,255,.08);
+    border-radius: 15px;
+}
+
+@media (max-width: 600px) {
+    .services {
+        grid-template-columns: 1fr;
+    }
+
+    .hire-box {
+        padding: 30px 20px;
+    }
+} 
+.project-buttons {
     display: flex;
     gap: 8px;
     flex-wrap: wrap;
@@ -650,6 +694,8 @@
         <a href="#projects">Projects</a>
 
         <a href="#contact">Contact</a>
+        
+        <a href="#hire">Hire Me</a>
 
     </div>
 
@@ -969,7 +1015,45 @@
 
 </section>
 
+<!-- =========================
+     HIRE ME
+========================= -->
 
+<section id="hire">
+
+    <div class="card hire-box">
+
+        <div class="hire-icon">🚀</div>
+
+        <h2 class="section-title">
+            Need a Website?
+        </h2>
+
+        <p>
+            I create simple, modern and mobile-friendly
+            websites for personal projects, creators
+            and small businesses.
+        </p>
+
+        <div class="services">
+
+            <div>🌐 Portfolio Website</div>
+
+            <div>🏪 Small Business Website</div>
+
+            <div>🎨 Landing Page</div>
+
+            <div>📱 Mobile-Friendly Design</div>
+
+        </div>
+
+        <a href="#contact" class="contact-button">
+            💼 Hire Me
+        </a>
+
+    </div>
+
+</section>
 <!-- =========================
      CONTACT
 ========================= -->
