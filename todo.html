@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App | Paswan Dev</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: linear-gradient(
+                -45deg,
+                #050b2e,
+                #101b52,
+                #351080,
+                #0066cc
+            );
+
+            background-size: 400% 400%;
+            animation: gradientMove 12s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .app {
+            width: min(92%, 650px);
+            padding: 25px;
+
+            background: rgba(255,255,255,.10);
+            border: 1px solid rgba(255,255,255,.18);
+            border-radius: 25px;
+
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 50px rgba(0,0,0,.4);
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+
+        .home {
+            color: white;
+            text-decoration: none;
+            padding: 8px 13px;
+            border: 1px solid rgba(255,255,255,.3);
+            border-radius: 20px;
+        }
+
+        .input-box {
+            display: flex;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        input {
+            flex: 1;
+            min-width: 0;
+            padding: 15px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: rgba(0,0,0,.25);
+            color: white;
+
+            font-size: 16px;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #cbd4ff;
+        }
+
+        button {
+            border: none;
+            border-radius: 12px;
+            padding: 13px 18px;
+
+            background: linear-gradient(
+                90deg,
+                #00aaff,
+                #c000ff
+            );
+
+            color: white;
+            font-weight: bold;
+
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0,200,255,.5);
+        }
+
+        .task {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            padding: 15px;
+            margin-bottom: 12px;
+
+            background: rgba(0,0,0,.20);
+            border-radius: 14px;
+        }
+
+        .task-text {
+            flex: 1;
+            word-break: break-word;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            opacity: .55;
+        }
+
+        .delete {
+            background: rgba(255,60,80,.7);
+            padding: 9px 12px;
+        }
+
+        .empty {
+            text-align: center;
+            color: #dce3ff;
+            padding: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .app {
+                width: 94%;
+                padding: 20px;
+            }
+
+            .top h1 {
+                font-size: 21px;
+            }
+
+            .input-box {
+                flex-direction: column;
+            }
+
+            .input-box button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="top">
+        <h1>✅ To-Do App</h1>
+
+        <a href="index.html" class="home">
+            🏠 Home
+        </a>
+    </div>
+
+    <div class="input-box">
+
+        <input
+            id="taskInput"
+            type="text"
+            placeholder="Enter a task..."
+            maxlength="100"
+        >
+
+        <button onclick="addTask()">
+            ➕ Add
+        </button>
+
+    </div>
+
+    <div id="taskList"></div>
+
+</div>
+
+
+<script>
+
+    let tasks =
+        JSON.parse(
+            localStorage.getItem("paswanTasks")
+        ) || [];
+
+
+    function saveTasks() {
+
+        localStorage.setItem(
+            "paswanTasks",
+            JSON.stringify(tasks)
+        );
+
+    }
+
+
+    function addTask() {
+
+        const input =
+            document.getElementById("taskInput");
+
+        const text =
+            input.value.trim();
+
+
+        if (!text) {
+
+            alert("Please enter a task.");
+
+            return;
+        }
+
+
+        tasks.push({
+
+            id: Date.now(),
+
+            text: text,
+
+            completed: false
+
+        });
+
+
+        input.value = "";
+
+        saveTasks();
+
+        displayTasks();
+
+    }
+
+
+    function toggleTask(id) {
+
+        tasks =
+            tasks.map(task => {
+
+                if (task.id === id) {
+
+                    task.completed =
+                        !task.completed;
+
+                }
+
+                return task;
+
+            });
+
+
+        saveTasks();
+
+        displayTasks();
+
+    }
+
+
+    function deleteTask(id) {
+
+        tasks =
+            tasks.filter(
+                task => task.id !== id
+            );
+
+
+        saveTasks();
+
+        displayTasks();
+
+    }
+
+
+    function displayTasks() {
+
+        const list =
+            document.getElementById("taskList");
+
+
+        if (tasks.length === 0) {
+
+            list.innerHTML =
+                '<div class="empty">📭 No tasks yet. Add your first task!</div>';
+
+            return;
+        }
+
+
+        list.innerHTML = "";
+
+
+        tasks.forEach(task => {
+
+            const row =
+                document.createElement("div");
+
+            row.className = "task";
+
+
+            const checkbox =
+                document.createElement("input");
+
+            checkbox.type = "checkbox";
+
+            checkbox.checked =
+                task.completed;
+
+
+            checkbox.onclick =
+                () => toggleTask(task.id);
+
+
+            const text =
+                document.createElement("span");
+
+            text.className =
+                "task-text" +
+                (task.completed
+                    ? " completed"
+                    : "");
+
+
+            text.textContent =
+                task.text;
+
+
+            const deleteButton =
+                document.createElement("button");
+
+            deleteButton.className =
+                "delete";
+
+            deleteButton.textContent =
+                "🗑️";
+
+
+            deleteButton.onclick =
+                () => deleteTask(task.id);
+
+
+            row.appendChild(checkbox);
+
+            row.appendChild(text);
+
+            row.appendChild(deleteButton);
+
+
+            list.appendChild(row);
+
+        });
+
+    }
+
+
+    document
+        .getElementById("taskInput")
+        .addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Enter") {
+
+                    addTask();
+
+                }
+
+            }
+        );
+
+
+    displayTasks();
+
+</script>
+
+</body>
+</html>
