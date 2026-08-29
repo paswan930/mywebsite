@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Calculator | Paswan Dev</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+            color: white;
+
+            background: linear-gradient(
+                -45deg,
+                #050b2e,
+                #101b52,
+                #351080,
+                #0066cc
+            );
+
+            background-size: 400% 400%;
+            animation: gradientMove 12s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .calculator {
+            width: min(92vw, 380px);
+
+            padding: 22px;
+
+            background: rgba(255, 255, 255, 0.12);
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+
+            border-radius: 25px;
+
+            backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 15px;
+        }
+
+        .top h1 {
+            font-size: 22px;
+            margin: 0;
+        }
+
+        .home {
+            color: white;
+            text-decoration: none;
+
+            padding: 8px 12px;
+
+            border: 1px solid rgba(255,255,255,.3);
+
+            border-radius: 15px;
+
+            font-size: 13px;
+        }
+
+        #display {
+            width: 100%;
+
+            height: 85px;
+
+            padding: 15px;
+
+            margin-bottom: 18px;
+
+            border: none;
+
+            border-radius: 18px;
+
+            background: rgba(0, 0, 0, 0.35);
+
+            color: white;
+
+            font-size: 34px;
+
+            text-align: right;
+
+            outline: none;
+        }
+
+        .buttons {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 10px;
+        }
+
+        button {
+            height: 65px;
+
+            border: none;
+
+            border-radius: 18px;
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            color: white;
+
+            background: rgba(255, 255, 255, 0.13);
+
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        button:active {
+            transform: scale(.94);
+        }
+
+        .operator {
+            background: rgba(0, 180, 255, .35);
+        }
+
+        .clear {
+            background: rgba(255, 60, 80, .55);
+        }
+
+        .equals {
+            background: linear-gradient(
+                135deg,
+                #00aaff,
+                #c000ff
+            );
+        }
+
+        .zero {
+            grid-column: span 2;
+        }
+
+        .info {
+            text-align: center;
+
+            margin-top: 18px;
+
+            font-size: 13px;
+
+            color: #dce4ff;
+        }
+
+        @media (max-width: 400px) {
+
+            .calculator {
+                padding: 16px;
+            }
+
+            button {
+                height: 58px;
+            }
+
+            #display {
+                height: 75px;
+                font-size: 29px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calculator">
+
+        <div class="top">
+
+            <h1>🧮 Smart Calculator</h1>
+
+            <a
+                class="home"
+                href="index.html"
+            >
+                🏠 Home
+            </a>
+
+        </div>
+
+
+        <input
+            id="display"
+            type="text"
+            value="0"
+            readonly
+        >
+
+
+        <div class="buttons">
+
+            <button
+                class="clear"
+                onclick="clearDisplay()"
+            >
+                AC
+            </button>
+
+            <button onclick="deleteLast()">
+                ⌫
+            </button>
+
+            <button onclick="percentage()">
+                %
+            </button>
+
+            <button
+                class="operator"
+                onclick="chooseOperator('/')"
+            >
+                ÷
+            </button>
+
+
+            <button onclick="number('7')">
+                7
+            </button>
+
+            <button onclick="number('8')">
+                8
+            </button>
+
+            <button onclick="number('9')">
+                9
+            </button>
+
+            <button
+                class="operator"
+                onclick="chooseOperator('*')"
+            >
+                ×
+            </button>
+
+
+            <button onclick="number('4')">
+                4
+            </button>
+
+            <button onclick="number('5')">
+                5
+            </button>
+
+            <button onclick="number('6')">
+                6
+            </button>
+
+            <button
+                class="operator"
+                onclick="chooseOperator('-')"
+            >
+                −
+            </button>
+
+
+            <button onclick="number('1')">
+                1
+            </button>
+
+            <button onclick="number('2')">
+                2
+            </button>
+
+            <button onclick="number('3')">
+                3
+            </button>
+
+            <button
+                class="operator"
+                onclick="chooseOperator('+')"
+            >
+                +
+            </button>
+
+
+            <button
+                class="zero"
+                onclick="number('0')"
+            >
+                0
+            </button>
+
+            <button onclick="decimal()">
+                .
+            </button>
+
+            <button
+                class="equals"
+                onclick="calculate()"
+            >
+                =
+            </button>
+
+        </div>
+
+
+        <div class="info">
+            🚀 Made with HTML, CSS & JavaScript
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const display =
+            document.getElementById("display");
+
+        let firstNumber = null;
+        let operator = null;
+        let waitingForSecond = false;
+
+
+        function number(value) {
+
+            if (
+                display.value === "0" ||
+                waitingForSecond
+            ) {
+                display.value = value;
+                waitingForSecond = false;
+            }
+
+            else {
+                display.value += value;
+            }
+        }
+
+
+        function decimal() {
+
+            if (waitingForSecond) {
+
+                display.value = "0.";
+                waitingForSecond = false;
+
+                return;
+            }
+
+            if (!display.value.includes(".")) {
+                display.value += ".";
+            }
+        }
+
+
+        function chooseOperator(nextOperator) {
+
+            const current =
+                parseFloat(display.value);
+
+            if (isNaN(current)) {
+                return;
+            }
+
+            if (
+                firstNumber !== null &&
+                operator !== null &&
+                !waitingForSecond
+            ) {
+
+                const result =
+                    performCalculation(
+                        firstNumber,
+                        current,
+                        operator
+                    );
+
+                display.value = formatResult(result);
+
+                firstNumber = result;
+            }
+
+            else {
+                firstNumber = current;
+            }
+
+            operator = nextOperator;
+
+            waitingForSecond = true;
+        }
+
+
+        function calculate() {
+
+            if (
+                firstNumber === null ||
+                operator === null
+            ) {
+                return;
+            }
+
+            const secondNumber =
+                parseFloat(display.value);
+
+            if (isNaN(secondNumber)) {
+                return;
+            }
+
+            const result =
+                performCalculation(
+                    firstNumber,
+                    secondNumber,
+                    operator
+                );
+
+            display.value =
+                formatResult(result);
+
+            firstNumber = null;
+            operator = null;
+            waitingForSecond = true;
+        }
+
+
+        function performCalculation(
+            a,
+            b,
+            op
+        ) {
+
+            if (op === "+") {
+                return a + b;
+            }
+
+            if (op === "-") {
+                return a - b;
+            }
+
+            if (op === "*") {
+                return a * b;
+            }
+
+            if (op === "/") {
+
+                if (b === 0) {
+                    return NaN;
+                }
+
+                return a / b;
+            }
+        }
+
+
+        function formatResult(value) {
+
+            if (!Number.isFinite(value)) {
+
+                return "Error";
+            }
+
+            return Number(
+                value.toPrecision(12)
+            ).toString();
+        }
+
+
+        function clearDisplay() {
+
+            display.value = "0";
+
+            firstNumber = null;
+
+            operator = null;
+
+            waitingForSecond = false;
+        }
+
+
+        function deleteLast() {
+
+            if (
+                display.value.length <= 1 ||
+                display.value === "Error"
+            ) {
+
+                display.value = "0";
+
+                return;
+            }
+
+            display.value =
+                display.value.slice(0, -1);
+        }
+
+
+        function percentage() {
+
+            const value =
+                parseFloat(display.value);
+
+            if (isNaN(value)) {
+                return;
+            }
+
+            display.value =
+                formatResult(value / 100);
+        }
+
+
+        /* Keyboard support */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key >= "0" &&
+                    event.key <= "9"
+                ) {
+                    number(event.key);
+                }
+
+                else if (event.key === ".") {
+                    decimal();
+                }
+
+                else if (
+                    ["+", "-", "*", "/"]
+                    .includes(event.key)
+                ) {
+                    chooseOperator(event.key);
+                }
+
+                else if (event.key === "Enter") {
+                    calculate();
+                }
+
+                else if (
+                    event.key === "Backspace"
+                ) {
+                    deleteLast();
+                }
+
+                else if (
+                    event.key === "Escape"
+                ) {
+                    clearDisplay();
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
