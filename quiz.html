@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App | Paswan Dev</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: linear-gradient(
+                -45deg,
+                #050b2e,
+                #101b52,
+                #351080,
+                #0066cc
+            );
+
+            background-size: 400% 400%;
+            animation: gradientMove 12s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .quiz {
+            width: min(92%, 650px);
+            padding: 25px;
+
+            background: rgba(255,255,255,.10);
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 25px;
+
+            backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,.4);
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .top h1 {
+            margin: 0;
+            font-size: 25px;
+        }
+
+        .home {
+            color: white;
+            text-decoration: none;
+
+            padding: 8px 12px;
+
+            border: 1px solid rgba(255,255,255,.3);
+            border-radius: 20px;
+
+            font-size: 13px;
+        }
+
+        .progress {
+            margin: 25px 0 15px;
+            color: #dce4ff;
+        }
+
+        .question {
+            font-size: 24px;
+            line-height: 1.4;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .option {
+            width: 100%;
+
+            padding: 16px;
+
+            text-align: left;
+
+            border: 1px solid rgba(255,255,255,.2);
+            border-radius: 15px;
+
+            background: rgba(255,255,255,.08);
+
+            color: white;
+
+            font-size: 16px;
+            cursor: pointer;
+
+            transition: .25s;
+        }
+
+        .option:hover {
+            transform: translateX(5px);
+            background: rgba(0,200,255,.2);
+        }
+
+        .option.correct {
+            background: rgba(30,200,100,.45);
+            border-color: #38ff91;
+        }
+
+        .option.wrong {
+            background: rgba(255,60,80,.45);
+            border-color: #ff6677;
+        }
+
+        .option:disabled {
+            cursor: not-allowed;
+        }
+
+        .next {
+            margin-top: 22px;
+
+            padding: 14px 28px;
+
+            border: none;
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00aaff,
+                    #c000ff
+                );
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .next:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 0 25px rgba(0,200,255,.6);
+        }
+
+        .result {
+            text-align: center;
+        }
+
+        .score {
+            font-size: 55px;
+            font-weight: bold;
+            color: #00eaff;
+            margin: 20px 0;
+        }
+
+        .restart {
+            padding: 14px 28px;
+
+            border: none;
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00aaff,
+                    #c000ff
+                );
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+
+            .quiz {
+                width: 94%;
+                padding: 20px;
+            }
+
+            .top h1 {
+                font-size: 21px;
+            }
+
+            .question {
+                font-size: 20px;
+            }
+
+            .option {
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="quiz">
+
+        <div class="top">
+
+            <h1>❓ Quiz App</h1>
+
+            <a href="index.html" class="home">
+                🏠 Home
+            </a>
+
+        </div>
+
+
+        <div id="quizScreen">
+
+            <div class="progress" id="progress">
+                Question 1 of 5
+            </div>
+
+            <div class="question" id="question">
+                Loading...
+            </div>
+
+            <div class="options" id="options"></div>
+
+            <button
+                class="next"
+                id="nextBtn"
+                onclick="nextQuestion()"
+                style="display:none;"
+            >
+                Next ➡️
+            </button>
+
+        </div>
+
+
+        <div id="resultScreen" class="result hidden">
+
+            <h2>🎉 Quiz Completed!</h2>
+
+            <div class="score" id="score">
+                0/5
+            </div>
+
+            <p id="message"></p>
+
+            <button
+                class="restart"
+                onclick="restartQuiz()"
+            >
+                🔄 Restart Quiz
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const questions = [
+
+            {
+                question:
+                    "HTML ka full form kya hai?",
+
+                options: [
+                    "Hyper Text Markup Language",
+                    "High Text Machine Language",
+                    "Hyper Tool Multi Language",
+                    "Home Text Markup Language"
+                ],
+
+                answer: 0
+            },
+
+            {
+                question:
+                    "CSS ka main use kya hai?",
+
+                options: [
+                    "Database banana",
+                    "Website ko style karna",
+                    "Server banana",
+                    "File delete karna"
+                ],
+
+                answer: 1
+            },
+
+            {
+                question:
+                    "JavaScript kis kaam ke liye use hota hai?",
+
+                options: [
+                    "Website ko interactive banane ke liye",
+                    "Sirf images banane ke liye",
+                    "Computer ko charge karne ke liye",
+                    "Internet band karne ke liye"
+                ],
+
+                answer: 0
+            },
+
+            {
+                question:
+                    "Git ka use generally kis liye hota hai?",
+
+                options: [
+                    "Version control",
+                    "Photo editing",
+                    "Video streaming",
+                    "Music playback"
+                ],
+
+                answer: 0
+            },
+
+            {
+                question:
+                    "Website ka homepage commonly kis naam se hota hai?",
+
+                options: [
+                    "main.exe",
+                    "home.css",
+                    "index.html",
+                    "start.js"
+                ],
+
+                answer: 2
+            }
+
+        ];
+
+
+        let currentQuestion = 0;
+
+        let score = 0;
+
+        let answered = false;
+
+
+        function loadQuestion() {
+
+            answered = false;
+
+            const q =
+                questions[currentQuestion];
+
+            document.getElementById("progress")
+                .textContent =
+                `Question ${currentQuestion + 1} of ${questions.length}`;
+
+            document.getElementById("question")
+                .textContent =
+                q.question;
+
+
+            const options =
+                document.getElementById("options");
+
+            options.innerHTML = "";
+
+
+            q.options.forEach(
+                (option, index) => {
+
+                    const button =
+                        document.createElement("button");
+
+                    button.className = "option";
+
+                    button.textContent =
+                        `${String.fromCharCode(65 + index)}. ${option}`;
+
+                    button.onclick =
+                        () => selectAnswer(
+                            index,
+                            button
+                        );
+
+                    options.appendChild(button);
+
+                }
+            );
+
+
+            document.getElementById("nextBtn")
+                .style.display = "none";
+        }
+
+
+        function selectAnswer(
+            selected,
+            clickedButton
+        ) {
+
+            if (answered) {
+                return;
+            }
+
+            answered = true;
+
+
+            const correct =
+                questions[currentQuestion].answer;
+
+
+            const buttons =
+                document.querySelectorAll(".option");
+
+
+            buttons.forEach(
+                (button, index) => {
+
+                    button.disabled = true;
+
+                    if (index === correct) {
+                        button.classList.add("correct");
+                    }
+
+                }
+            );
+
+
+            if (selected === correct) {
+
+                score++;
+
+            } else {
+
+                clickedButton.classList.add("wrong");
+
+            }
+
+
+            document.getElementById("nextBtn")
+                .style.display = "inline-block";
+        }
+
+
+        function nextQuestion() {
+
+            currentQuestion++;
+
+
+            if (
+                currentQuestion <
+                questions.length
+            ) {
+
+                loadQuestion();
+
+            } else {
+
+                showResult();
+
+            }
+
+        }
+
+
+        function showResult() {
+
+            document.getElementById("quizScreen")
+                .classList.add("hidden");
+
+            document.getElementById("resultScreen")
+                .classList.remove("hidden");
+
+
+            document.getElementById("score")
+                .textContent =
+                `${score}/${questions.length}`;
+
+
+            let message = "";
+
+            const percentage =
+                (score / questions.length) * 100;
+
+
+            if (percentage === 100) {
+
+                message =
+                    "🏆 Perfect score! Excellent!";
+
+            } else if (percentage >= 60) {
+
+                message =
+                    "👏 Great job! Keep learning.";
+
+            } else {
+
+                message =
+                    "💪 Keep practicing. You can do it!";
+
+            }
+
+
+            document.getElementById("message")
+                .textContent = message;
+        }
+
+
+        function restartQuiz() {
+
+            currentQuestion = 0;
+
+            score = 0;
+
+            document.getElementById("resultScreen")
+                .classList.add("hidden");
+
+            document.getElementById("quizScreen")
+                .classList.remove("hidden");
+
+            loadQuestion();
+
+        }
+
+
+        loadQuestion();
+
+    </script>
+
+</body>
+</html>
