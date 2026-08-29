@@ -845,6 +845,44 @@ footer p {
         grid-template-columns: 1fr;
     }
 }
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    margin-right: 7px;
+}
+
+.brand {
+    background: linear-gradient(
+        90deg,
+        #00eaff,
+        #ffffff,
+        #c000ff
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    margin: 10px 0 20px;
+    font-size: 22px;
+    opacity: .9;
+}
+
+@media (max-width: 600px) {
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .hero-subtitle {
+        font-size: 17px;
+    }
+}
     </style>
 
 </head>
@@ -860,8 +898,8 @@ footer p {
 <nav>
 
     <div class="logo">
-        🚀 Paswan <span>Dev</span>
-    </div>
+    <span>&lt;/&gt;</span> Paswan Dev
+</div>
 
     <div>
 
@@ -892,9 +930,13 @@ footer p {
 
     <div class="hero-content">
 
-        <div class="badge">
-            👋 Welcome to my portfolio
-        </div>
+        <h1>
+    Hi, I'm <span class="brand">Paswan Dev</span> 👋
+</h1>
+
+<h2 class="hero-subtitle">
+    Beginner Web Developer • Creator • Learner
+</h2>
 
         <h1>
             Paswan <span>Dev</span>
