@@ -984,6 +984,85 @@ footer p {
         grid-template-columns: 1fr;
     }
 }
+/* PREMIUM PROJECT CARDS */
+
+.project-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: -90px;
+    right: -90px;
+
+    background: rgba(0, 220, 255, .18);
+    border-radius: 50%;
+
+    transition: .4s;
+}
+
+.project-card:hover::before {
+    transform: scale(2);
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.01);
+}
+
+.project-preview {
+    position: relative;
+    z-index: 1;
+
+    transition: .4s;
+}
+
+.project-card:hover .project-preview {
+    transform: scale(1.08);
+}
+
+.project-content {
+    position: relative;
+    z-index: 2;
+}
+
+.project-tag {
+    display: inline-block;
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.15);
+}
+
+.project-buttons .btn {
+    transition: .3s;
+}
+
+.project-buttons .btn:hover {
+    transform: translateY(-3px);
+}
+.featured-project::after {
+    content: "⭐ FEATURED";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.2);
+
+    font-size: 11px;
+    font-weight: bold;
+
+    z-index: 5;
+}
     </style>
 
 </head>
@@ -1414,7 +1493,7 @@ footer p {
 
 
         <!-- Quiz -->
-        <div class="project-card">
+        <div class="project-card featured-project">
            
             <div class="project-preview quiz-preview">
                 ❓
