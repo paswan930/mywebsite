@@ -1,364 +1,659 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paswan Dev | Web Developer 🚀</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-* {
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
+    <meta name="description"
+        content="Paswan Dev - Web Developer, Student and Tech Enthusiast">
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: white;
-    background: linear-gradient(-45deg,#050b2e,#101b52,#351080,#0066cc);
-    background-size: 400% 400%;
-    animation: gradientMove 12s ease infinite;
-}
+    <title>Paswan Dev | Web Developer 🚀</title>
 
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+    <style>
 
-/* NAVBAR */
-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 14px 6%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(5,10,40,.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(0,200,255,.4);
-}
+        /* =========================
+           BASIC
+        ========================= */
 
-.logo {
-    font-size: 22px;
-    font-weight: bold;
-}
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-.logo span {
-    color: #00d9ff;
-}
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 18px;
-    font-weight: bold;
-}
+            background: linear-gradient(
+                -45deg,
+                #050b2e,
+                #101b52,
+                #351080,
+                #0066cc
+            );
 
-nav a:hover {
-    color: #00eaff;
-}
+            background-size: 400% 400%;
+            animation: gradientMove 12s ease infinite;
 
-/* COMMON */
-section {
-    padding: 100px 7% 70px;
-}
+            overflow-x: hidden;
+        }
 
-.card {
-    background: rgba(255,255,255,.09);
-    border: 1px solid rgba(255,255,255,.15);
-    border-radius: 22px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 15px 40px rgba(0,0,0,.3);
-}
+        @keyframes gradientMove {
 
-/* HERO */
-.hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+            0% {
+                background-position: 0% 50%;
+            }
 
-.hero-content {
-    max-width: 1000px;
-    width: 100%;
-    text-align: left;
-}
+            50% {
+                background-position: 100% 50%;
+            }
 
-.badge {
-    display: inline-block;
-    padding: 10px 18px;
-    border: 1px solid #00d9ff;
-    border-radius: 30px;
-    margin-bottom: 20px;
-}
+            100% {
+                background-position: 0% 50%;
+            }
 
-.hero h1 {
-    font-size: clamp(45px,8vw,80px);
-    margin: 10px 0;
-}
+        }
 
-.hero h1 span {
-    color: #c83cff;
-}
 
-.hero h2 {
-    font-size: clamp(20px,4vw,32px);
-}
+        /* =========================
+           NAVBAR
+        ========================= */
 
-.hero p {
-    max-width: 650px;
-    font-size: 19px;
-    line-height: 1.7;
-    color: #e3e8ff;
-}
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
 
-.buttons {
-    margin-top: 30px;
-}
+            width: 100%;
 
-.btn {
-    display: inline-block;
-    padding: 15px 25px;
-    margin: 7px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
-    border: 1px solid #00d9ff;
-    transition: .3s;
-}
+            padding: 14px 6%;
 
-.btn.primary {
-    background: linear-gradient(90deg,#00aaff,#d000ff);
-}
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
 
-.btn:hover {
-    transform: translateY(-5px) scale(1.04);
-    box-shadow: 0 0 25px rgba(0,220,255,.6);
-}
+            background: rgba(5, 10, 40, 0.85);
 
-/* ABOUT */
-.about-box {
-    padding: 35px;
-}
+            backdrop-filter: blur(12px);
 
-h2.section-title {
-    font-size: 38px;
-    margin-bottom: 20px;
-}
+            border-bottom: 1px solid rgba(0, 200, 255, 0.35);
 
-.about-box p {
-    font-size: 18px;
-    line-height: 1.8;
-}
+            z-index: 1000;
+        }
 
-.stats {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 25px;
-}
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
 
-.stat {
-    padding: 18px 25px;
-    min-width: 140px;
-    background: rgba(0,0,0,.2);
-    border-radius: 15px;
-}
+        .logo span {
+            color: #00d9ff;
+        }
 
-.stat strong {
-    display: block;
-    font-size: 28px;
-    color: #00ddff;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
 
-/* SKILLS */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 18px;
-}
+            margin-left: 18px;
 
-.skill {
-    padding: 25px;
-}
+            font-weight: bold;
 
-.skill h3 {
-    margin-top: 0;
-}
+            transition: 0.3s;
+        }
 
-.bar {
-    height: 8px;
-    background: rgba(255,255,255,.15);
-    border-radius: 10px;
-    overflow: hidden;
-}
+        nav a:hover {
+            color: #00eaff;
+        }
 
-.bar span {
-    display: block;
-    height: 100%;
-    background: linear-gradient(90deg,#00d9ff,#d900ff);
-    border-radius: 10px;
-}
 
-/* PROJECTS */
-.projects {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 20px;
-}
+        /* =========================
+           SECTIONS
+        ========================= */
 
-.project {
-    padding: 25px;
-    transition: .3s;
-}
+        section {
+            width: 100%;
+            min-height: 100vh;
 
-.project:hover {
-    transform: translateY(-8px);
-}
+            padding: 110px 7% 70px;
 
-.project-icon {
-    font-size: 45px;
-}
+            display: flex;
+            flex-direction: column;
 
-.project p {
-    color: #dbe1ff;
-    line-height: 1.6;
-}
+            justify-content: center;
+            align-items: center;
+        }
 
-/* CONTACT */
-.contact-box {
-    text-align: center;
-    padding: 45px 20px;
-}
 
-.contact-button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 16px 32px;
-    border-radius: 30px;
-    background: linear-gradient(90deg,#00bfff,#d000ff);
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: .3s;
-}
+        /* =========================
+           HERO
+        ========================= */
 
-.contact-button:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 30px rgba(0,220,255,.7);
-}
+        .hero {
+            min-height: 100vh;
+        }
 
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 40px 20px;
-    background: rgba(0,0,0,.35);
-}
+        .hero-content {
+            width: 100%;
+            max-width: 1000px;
 
-.social a {
-    font-size: 25px;
-    margin: 10px;
-    text-decoration: none;
-}
+            text-align: center;
+        }
 
-/* MOBILE */
-@media (max-width:700px) {
+        .badge {
+            display: inline-block;
 
-    nav {
-        padding: 12px 15px;
-    }
+            padding: 10px 20px;
 
-    nav a {
-        margin-left: 8px;
-        font-size: 13px;
-    }
+            border: 1px solid #00d9ff;
 
-    .logo {
-        font-size: 17px;
-    }
+            border-radius: 30px;
 
-    section {
-        padding: 90px 18px 50px;
-    }
+            margin-bottom: 20px;
 
-    .hero {
-        min-height: 100vh;
-    }
+            background: rgba(0, 217, 255, 0.08);
+        }
 
-    .hero-content {
-        text-align: center;
-    }
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 80px);
 
-    .hero p {
-        font-size: 16px;
-    }
+            margin: 10px 0;
+        }
 
-    .skills-grid,
-    .projects {
-        grid-template-columns: 1fr;
-    }
+        .hero h1 span {
+            color: #c83cff;
+        }
 
-    .about-box {
-        padding: 25px;
-    }
+        .hero h2 {
+            font-size: clamp(20px, 4vw, 32px);
+        }
 
-    h2.section-title {
-        font-size: 30px;
-    }
+        .hero p {
+            max-width: 700px;
 
-    .stats {
-        justify-content: center;
-    }
-}
-</style>
+            margin: 20px auto;
+
+            font-size: 19px;
+
+            line-height: 1.7;
+
+            color: #e3e8ff;
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .buttons {
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+
+            padding: 15px 25px;
+
+            margin: 7px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            color: white;
+
+            border: 1px solid #00d9ff;
+
+            transition: 0.3s;
+
+            cursor: pointer;
+        }
+
+        .btn.primary {
+            background: linear-gradient(
+                90deg,
+                #00aaff,
+                #d000ff
+            );
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.04);
+
+            box-shadow:
+                0 0 25px rgba(0, 220, 255, 0.6);
+        }
+
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .card {
+            width: 100%;
+
+            background: rgba(255, 255, 255, 0.09);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            border-radius: 22px;
+
+            backdrop-filter: blur(12px);
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            font-size: 38px;
+
+            margin-bottom: 25px;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-box {
+            max-width: 850px;
+
+            padding: 40px;
+        }
+
+        .about-box p {
+            font-size: 18px;
+
+            line-height: 1.8;
+
+            color: #e3e8ff;
+        }
+
+        .stats {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+            margin-top: 30px;
+        }
+
+        .stat {
+            min-width: 150px;
+
+            padding: 20px;
+
+            background: rgba(0, 0, 0, 0.2);
+
+            border-radius: 15px;
+
+            text-align: center;
+        }
+
+        .stat strong {
+            display: block;
+
+            font-size: 30px;
+
+            color: #00ddff;
+
+            margin-bottom: 5px;
+        }
+
+
+        /* =========================
+           SKILLS
+        ========================= */
+
+        .skills-grid {
+            width: 100%;
+
+            max-width: 1000px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+        .skill {
+            padding: 25px;
+
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-8px);
+        }
+
+        .skill h3 {
+            margin-top: 0;
+        }
+
+        .bar {
+            height: 8px;
+
+            background: rgba(255, 255, 255, 0.15);
+
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+
+        .bar span {
+            display: block;
+
+            height: 100%;
+
+            background: linear-gradient(
+                90deg,
+                #00d9ff,
+                #d900ff
+            );
+
+            border-radius: 10px;
+        }
+
+
+        /* =========================
+           PROJECTS
+        ========================= */
+
+        .projects {
+            width: 100%;
+
+            max-width: 1000px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+        .project {
+            padding: 25px;
+
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-10px);
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.35);
+        }
+
+        .project-icon {
+            font-size: 45px;
+        }
+
+        .project h3 {
+            font-size: 23px;
+        }
+
+        .project p {
+            color: #dbe1ff;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-box {
+            max-width: 700px;
+
+            padding: 45px 25px;
+
+            text-align: center;
+        }
+
+        .contact-box p {
+            font-size: 19px;
+
+            color: #e3e8ff;
+        }
+
+        .contact-button {
+            display: inline-block;
+
+            margin-top: 20px;
+
+            padding: 16px 32px;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #00bfff,
+                    #d000ff
+                );
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .contact-button:hover {
+            transform: scale(1.08);
+
+            box-shadow:
+                0 0 30px rgba(0, 220, 255, 0.7);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+
+            padding: 45px 20px;
+
+            background:
+                rgba(0, 0, 0, 0.4);
+        }
+
+        footer h2 {
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #dbe1ff;
+        }
+
+        .social {
+            margin: 20px 0;
+        }
+
+        .social a {
+            display: inline-block;
+
+            margin: 8px;
+
+            font-size: 26px;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            transform: scale(1.2);
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 12px 14px;
+            }
+
+            .logo {
+                font-size: 17px;
+            }
+
+            nav a {
+                margin-left: 7px;
+
+                font-size: 12px;
+            }
+
+            section {
+                padding:
+                    100px 16px 60px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .hero h2 {
+                font-size: 20px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .about-box {
+                padding: 25px 20px;
+            }
+
+            .skills-grid,
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .skill,
+            .project {
+                width: 100%;
+            }
+
+            .stats {
+                flex-direction: column;
+
+                align-items: center;
+            }
+
+            .stat {
+                width: 90%;
+            }
+
+            .btn {
+                padding: 13px 20px;
+
+                font-size: 15px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<!-- NAVBAR -->
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
 <nav>
-    <div class="logo">🚀 Paswan <span>Dev</span></div>
+
+    <div class="logo">
+        🚀 Paswan <span>Dev</span>
+    </div>
 
     <div>
+
         <a href="#home">Home</a>
+
         <a href="#about">About</a>
+
         <a href="#skills">Skills</a>
+
         <a href="#projects">Projects</a>
+
         <a href="#contact">Contact</a>
+
     </div>
+
 </nav>
 
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
+
 <section id="home" class="hero">
 
     <div class="hero-content">
 
-        <div class="badge">👋 Hello, I'm</div>
+        <div class="badge">
+            👋 Welcome to my portfolio
+        </div>
 
-        <h1>Paswan <span>Dev</span></h1>
+        <h1>
+            Paswan <span>Dev</span>
+        </h1>
 
-        <h2>Web Developer | Student | Tech Enthusiast</h2>
+        <h2>
+            Web Developer | Student | Tech Enthusiast
+        </h2>
 
         <p>
-            I love building modern, responsive and user-friendly
-            websites. My goal is to create digital experiences
-            that are simple, powerful and beautiful.
+            I love creating modern, responsive and
+            user-friendly websites. I'm learning,
+            building projects and turning ideas into
+            real digital experiences.
         </p>
 
         <div class="buttons">
-            <a href="#projects" class="btn primary">
+
+            <a
+                href="#projects"
+                class="btn primary"
+            >
                 🚀 View My Projects
             </a>
 
-            <a href="#contact" class="btn">
+            <a
+                href="#contact"
+                class="btn"
+            >
                 ✉️ Contact Me
             </a>
+
         </div>
 
     </div>
@@ -366,34 +661,54 @@ footer {
 </section>
 
 
-<!-- ABOUT -->
+<!-- =========================
+     ABOUT
+========================= -->
+
 <section id="about">
 
     <div class="card about-box">
 
-        <h2 class="section-title">👨‍💻 About Me</h2>
+        <h2 class="section-title">
+            👨‍💻 About Me
+        </h2>
 
         <p>
-            Hi! I'm Paswan Dev, a student learning web development.
-            I enjoy learning new technologies, building creative
-            projects and turning ideas into reality through code.
+            Hi! I'm Paswan Dev, a student learning
+            web development. I enjoy learning new
+            technologies, building creative projects
+            and improving my coding skills.
+        </p>
+
+        <p>
+            My goal is to create useful and beautiful
+            websites that people enjoy using.
         </p>
 
         <div class="stats">
 
             <div class="stat">
+
                 <strong>10+</strong>
+
                 Projects
+
             </div>
 
             <div class="stat">
+
                 <strong>2+</strong>
+
                 Years Learning
+
             </div>
 
             <div class="stat">
+
                 <strong>100%</strong>
+
                 Dedication
+
             </div>
 
         </div>
@@ -403,53 +718,82 @@ footer {
 </section>
 
 
-<!-- SKILLS -->
+<!-- =========================
+     SKILLS
+========================= -->
+
 <section id="skills">
 
-    <h2 class="section-title">🛠️ My Skills</h2>
+    <h2 class="section-title">
+        🛠️ My Skills
+    </h2>
 
     <div class="skills-grid">
 
+
         <div class="card skill">
+
             <h3>🌐 HTML</h3>
+
             <div class="bar">
                 <span style="width:95%"></span>
             </div>
+
         </div>
 
+
         <div class="card skill">
+
             <h3>🎨 CSS</h3>
+
             <div class="bar">
                 <span style="width:90%"></span>
             </div>
+
         </div>
 
+
         <div class="card skill">
+
             <h3>⚡ JavaScript</h3>
-            <div class="bar">
-                <span style="width:85%"></span>
-            </div>
-        </div>
 
-        <div class="card skill">
-            <h3>🐍 Python</h3>
-            <div class="bar">
-                <span style="width:75%"></span>
-            </div>
-        </div>
-
-        <div class="card skill">
-            <h3>🐙 Git & GitHub</h3>
             <div class="bar">
                 <span style="width:80%"></span>
             </div>
+
         </div>
 
+
         <div class="card skill">
-            <h3>📱 Responsive Design</h3>
+
+            <h3>🐍 Python</h3>
+
             <div class="bar">
-                <span style="width:95%"></span>
+                <span style="width:70%"></span>
             </div>
+
+        </div>
+
+
+        <div class="card skill">
+
+            <h3>🐙 Git & GitHub</h3>
+
+            <div class="bar">
+                <span style="width:80%"></span>
+            </div>
+
+        </div>
+
+
+        <div class="card skill">
+
+            <h3>📱 Responsive Design</h3>
+
+            <div class="bar">
+                <span style="width:90%"></span>
+            </div>
+
         </div>
 
     </div>
@@ -457,41 +801,84 @@ footer {
 </section>
 
 
-<!-- PROJECTS -->
+<!-- =========================
+     PROJECTS
+========================= -->
+
 <section id="projects">
 
-    <h2 class="section-title">🚀 My Projects</h2>
+    <h2 class="section-title">
+        🚀 My Projects
+    </h2>
 
     <div class="projects">
 
-        <div class="card project">
-            <div class="project-icon">🧮</div>
-            <h3>Smart Calculator</h3>
-            <p>
-                A simple and responsive calculator built with
-                HTML, CSS and JavaScript.
-            </p>
-            <a href="#" class="btn">View Project ↗</a>
-        </div>
 
         <div class="card project">
-            <div class="project-icon">📝</div>
-            <h3>Note Keeper</h3>
+
+            <div class="project-icon">
+                🧮
+            </div>
+
+            <h3>
+                Smart Calculator
+            </h3>
+
             <p>
-                A simple notes application for creating and
-                managing notes.
+                A simple calculator project
+                built with HTML, CSS and
+                JavaScript.
             </p>
-            <a href="#" class="btn">View Project ↗</a>
+
+            <a href="#" class="btn">
+                View Project ↗
+            </a>
+
         </div>
 
+
         <div class="card project">
-            <div class="project-icon">❓</div>
-            <h3>Quiz App</h3>
+
+            <div class="project-icon">
+                📝
+            </div>
+
+            <h3>
+                Note Keeper
+            </h3>
+
             <p>
-                A fun quiz application for testing knowledge
-                with interactive questions.
+                A simple notes application
+                for creating and managing
+                notes.
             </p>
-            <a href="#" class="btn">View Project ↗</a>
+
+            <a href="#" class="btn">
+                View Project ↗
+            </a>
+
+        </div>
+
+
+        <div class="card project">
+
+            <div class="project-icon">
+                ❓
+            </div>
+
+            <h3>
+                Quiz App
+            </h3>
+
+            <p>
+                An interactive quiz project
+                for testing knowledge.
+            </p>
+
+            <a href="#" class="btn">
+                View Project ↗
+            </a>
+
         </div>
 
     </div>
@@ -499,18 +886,25 @@ footer {
 </section>
 
 
-<!-- CONTACT -->
+<!-- =========================
+     CONTACT
+========================= -->
+
 <section id="contact">
 
     <div class="card contact-box">
 
-        <h2 class="section-title">📩 Contact Me</h2>
+        <h2 class="section-title">
+            📩 Contact Me
+        </h2>
 
         <p>
-            Let's work together or just say hi! 👋
+            Want to get in touch? I'd love to
+            hear from you!
         </p>
 
         <!-- APNA EMAIL YAHAN LIKHNA -->
+
         <a
             href="mailto:YOUR_EMAIL@gmail.com"
             class="contact-button"
@@ -523,20 +917,33 @@ footer {
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
-    <h2>🚀 Paswan Dev</h2>
+    <h2>
+        🚀 Paswan Dev
+    </h2>
 
-    <p>Code • Create • Inspire</p>
+    <p>
+        Code • Create • Inspire
+    </p>
 
     <div class="social">
 
-        <a href="https://github.com/paswan930" target="_blank">
+        <a
+            href="https://github.com/paswan930"
+            target="_blank"
+            rel="noopener"
+        >
             🐙
         </a>
 
-        <a href="mailto:vikashkumardh930@gmail.com">
+        <a
+            href="mailto:vikashkumardh930@gmail.com"
+        >
             ✉️
         </a>
 
