@@ -24,6 +24,22 @@
 </svg>">
 
     <style> 
+/* SCROLL REVEAL */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 footer {
     text-align: center;
     padding: 35px 20px;
@@ -1269,6 +1285,57 @@ footer p {
 }
 
 }
+/* LOADING SCREEN */
+
+#loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: #080d2b;
+
+    transition: opacity .6s ease, visibility .6s ease;
+}
+
+#loader.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-logo {
+    font-size: 55px;
+    font-weight: bold;
+}
+
+.loader-text {
+    margin-top: 8px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.loader-spinner {
+    width: 42px;
+    height: 42px;
+
+    margin-top: 25px;
+
+    border: 4px solid rgba(255,255,255,.2);
+    border-top-color: white;
+    border-radius: 50%;
+
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
 </style>
 
 </head>
@@ -1310,7 +1377,7 @@ footer p {
      HERO
 ========================= -->
 
-<section id="home" class="hero">
+<section id="home" class="reveal">
 
     <div class="hero-content">
 
@@ -2018,7 +2085,57 @@ function toggleMenu() {
     const menu = document.getElementById("navLinks");
     menu.classList.toggle("active");
 }
+/* LOADING SCREEN */
+
+window.addEventListener("load", function() {
+
+    setTimeout(function() {
+
+        document
+            .getElementById("loader")
+            .classList.add("hide");
+
+    }, 800);
+
+});
+
+
+/* SCROLL REVEAL */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+
+    revealElements.forEach(function(element) {
+
+        const position =
+            element.getBoundingClientRect().top;
+
+        const screenHeight =
+            window.innerHeight;
+
+        if (position < screenHeight - 100) {
+            element.classList.add("show");
+        }
+
+    });
+
+}
+
+window.addEventListener(
+    "scroll",
+    revealOnScroll
+);
+
+revealOnScroll();
 </script>
 
 </body>
+<!-- LOADING SCREEN -->
+<div id="loader">
+    <div class="loader-logo">&lt;/&gt;</div>
+    <div class="loader-text">Paswan Dev</div>
+    <div class="loader-spinner"></div>
+</div>
 </html>
