@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Note Keeper | Paswan Dev</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            color: white;
+
+            background: linear-gradient(
+                -45deg,
+                #050b2e,
+                #101b52,
+                #351080,
+                #0066cc
+            );
+
+            background-size: 400% 400%;
+            animation: gradientMove 12s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .app {
+            width: min(92%, 800px);
+            margin: auto;
+            padding: 35px 0 50px;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .top h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .home {
+            color: white;
+            text-decoration: none;
+            padding: 9px 14px;
+            border: 1px solid rgba(255,255,255,.3);
+            border-radius: 20px;
+        }
+
+        .box {
+            padding: 25px;
+            margin-bottom: 25px;
+
+            background: rgba(255,255,255,.10);
+            border: 1px solid rgba(255,255,255,.18);
+            border-radius: 22px;
+            backdrop-filter: blur(12px);
+
+            box-shadow: 0 15px 40px rgba(0,0,0,.3);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: rgba(0,0,0,.3);
+            color: white;
+
+            outline: none;
+            font-size: 16px;
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #cbd4ff;
+        }
+
+        button {
+            padding: 13px 22px;
+
+            border: none;
+            border-radius: 25px;
+
+            color: white;
+            font-weight: bold;
+            font-size: 15px;
+
+            cursor: pointer;
+
+            background: linear-gradient(
+                90deg,
+                #00aaff,
+                #c000ff
+            );
+
+            transition: .3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0,200,255,.5);
+        }
+
+        .note {
+            padding: 20px;
+            margin-bottom: 15px;
+
+            background: rgba(0,0,0,.22);
+
+            border-radius: 17px;
+
+            border-left: 4px solid #00d9ff;
+        }
+
+        .note h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            word-break: break-word;
+        }
+
+        .note p {
+            line-height: 1.6;
+            white-space: pre-wrap;
+            color: #e4e9ff;
+        }
+
+        .delete {
+            background: rgba(255,60,80,.65);
+            margin-top: 5px;
+        }
+
+        .empty {
+            text-align: center;
+            color: #dce3ff;
+        }
+
+        @media (max-width: 600px) {
+            .app {
+                width: 94%;
+                padding-top: 25px;
+            }
+
+            .top h1 {
+                font-size: 22px;
+            }
+
+            .box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="top">
+        <h1>📝 Note Keeper</h1>
+
+        <a href="index.html" class="home">
+            🏠 Home
+        </a>
+    </div>
+
+
+    <div class="box">
+
+        <h2>➕ Add New Note</h2>
+
+        <input
+            id="title"
+            type="text"
+            placeholder="Note title"
+        >
+
+        <textarea
+            id="content"
+            placeholder="Write your note here..."
+        ></textarea>
+
+        <button onclick="addNote()">
+            💾 Save Note
+        </button>
+
+    </div>
+
+
+    <div class="box">
+
+        <h2>📚 My Notes</h2>
+
+        <div id="notes"></div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    let notes =
+        JSON.parse(
+            localStorage.getItem("paswanNotes")
+        ) || [];
+
+
+    function saveNotes() {
+
+        localStorage.setItem(
+            "paswanNotes",
+            JSON.stringify(notes)
+        );
+
+    }
+
+
+    function addNote() {
+
+        const title =
+            document.getElementById("title").value.trim();
+
+        const content =
+            document.getElementById("content").value.trim();
+
+
+        if (!title || !content) {
+
+            alert("Please enter both title and note.");
+
+            return;
+        }
+
+
+        const note = {
+
+            id: Date.now(),
+
+            title: title,
+
+            content: content
+
+        };
+
+
+        notes.unshift(note);
+
+        saveNotes();
+
+        document.getElementById("title").value = "";
+
+        document.getElementById("content").value = "";
+
+        displayNotes();
+
+    }
+
+
+    function deleteNote(id) {
+
+        notes =
+            notes.filter(
+                note => note.id !== id
+            );
+
+        saveNotes();
+
+        displayNotes();
+
+    }
+
+
+    function displayNotes() {
+
+        const container =
+            document.getElementById("notes");
+
+
+        if (notes.length === 0) {
+
+            container.innerHTML =
+                '<div class="empty">📭 No notes yet. Create your first note!</div>';
+
+            return;
+        }
+
+
+        container.innerHTML = "";
+
+
+        notes.forEach(note => {
+
+            const div =
+                document.createElement("div");
+
+            div.className = "note";
+
+
+            const heading =
+                document.createElement("h3");
+
+            heading.textContent =
+                "📌 " + note.title;
+
+
+            const paragraph =
+                document.createElement("p");
+
+            paragraph.textContent =
+                note.content;
+
+
+            const deleteButton =
+                document.createElement("button");
+
+            deleteButton.textContent =
+                "🗑️ Delete";
+
+            deleteButton.className =
+                "delete";
+
+
+            deleteButton.onclick =
+                function () {
+
+                    deleteNote(note.id);
+
+                };
+
+
+            div.appendChild(heading);
+
+            div.appendChild(paragraph);
+
+            div.appendChild(deleteButton);
+
+
+            container.appendChild(div);
+
+        });
+
+    }
+
+
+    displayNotes();
+
+</script>
+
+</body>
+</html>
