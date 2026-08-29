@@ -883,6 +883,95 @@ footer p {
         font-size: 17px;
     }
 }
+/* SERVICES */
+
+#services {
+    width: 100%;
+    min-height: 100vh;
+    padding: 90px 20px 60px;
+    text-align: center;
+}
+
+.services-intro {
+    max-width: 650px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+    color: #e4e9ff;
+}
+
+.services-grid {
+    width: 100%;
+    max-width: 1000px;
+    margin: 30px auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.service-card {
+    padding: 30px 22px;
+
+    background: rgba(255,255,255,.10);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 20px;
+
+    backdrop-filter: blur(10px);
+
+    transition: .3s;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.3);
+}
+
+.service-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.service-card h3 {
+    font-size: 22px;
+    margin: 10px 0;
+}
+
+.service-card p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #e4e9ff;
+}
+
+.service-button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 14px 25px;
+
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+
+    border-radius: 25px;
+
+    background: linear-gradient(
+        90deg,
+        #00aaff,
+        #c000ff
+    );
+
+    transition: .3s;
+}
+
+.service-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(0,200,255,.5);
+}
+
+@media (max-width: 600px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+}
     </style>
 
 </head>
@@ -909,7 +998,7 @@ footer p {
 
         <a href="#skills">Skills</a>
 
-        <a href="#skills">Skills</a>
+        <a href="#services">Services</a>
 
         <a href="#projects">Projects</a>
 
@@ -1158,6 +1247,61 @@ footer p {
         </div>
 
     </div>
+
+</section>
+<!-- SERVICES -->
+<section id="services">
+
+    <h2 class="section-title">🛠️ My Services</h2>
+
+    <p class="services-intro">
+        I can build simple, modern and mobile-friendly
+        websites for personal projects and small businesses.
+    </p>
+
+    <div class="services-grid">
+
+        <div class="service-card">
+            <div class="service-icon">🌐</div>
+            <h3>Portfolio Website</h3>
+            <p>
+                A clean personal website to showcase
+                your skills, projects and achievements.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🏪</div>
+            <h3>Business Website</h3>
+            <p>
+                A simple website for a shop, local business
+                or service provider.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">🎨</div>
+            <h3>Landing Page</h3>
+            <p>
+                A focused webpage for promoting a project,
+                product or service.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">📱</div>
+            <h3>Mobile-Friendly Design</h3>
+            <p>
+                Websites designed to work smoothly
+                on phones, tablets and computers.
+            </p>
+        </div>
+
+    </div>
+
+    <a href="#contact" class="service-button">
+        📩 Discuss Your Project
+    </a>
 
 </section>
 
