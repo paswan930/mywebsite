@@ -664,7 +664,105 @@
             }
 
         }
+.projects-grid {
+    width: 100%;
+    max-width: 1100px;
+    margin: 30px auto 0;
 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.project-card {
+    overflow: hidden;
+
+    background: rgba(255,255,255,.10);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 22px;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow: 0 15px 40px rgba(0,0,0,.25);
+
+    transition: .35s;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 45px rgba(0,0,0,.4);
+}
+
+.project-preview {
+    height: 170px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 70px;
+
+    background: rgba(0,0,0,.18);
+}
+
+.calculator-preview {
+    background: linear-gradient(135deg, #182848, #4b6cb7);
+}
+
+.notes-preview {
+    background: linear-gradient(135deg, #42275a, #734b6d);
+}
+
+.quiz-preview {
+    background: linear-gradient(135deg, #134e5e, #71b280);
+}
+
+.project-content {
+    padding: 22px;
+}
+
+.project-tag {
+    font-size: 12px;
+    opacity: .8;
+}
+
+.project-content h3 {
+    margin: 10px 0;
+    font-size: 24px;
+}
+
+.project-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #e4e9ff;
+}
+
+.project-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+}
+
+.project-buttons .btn {
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    .projects-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-preview {
+        height: 150px;
+    }
+}
     </style>
 
 </head>
@@ -898,116 +996,135 @@
 
 <section id="projects">
 
-    <h2 class="section-title">
-        🚀 My Projects
-    </h2>
+    <h2 class="section-title">🚀 My Projects</h2>
 
-    <div class="projects">
+    <div class="projects-grid">
 
+        <!-- Calculator -->
+        <div class="project-card">
 
-        <div class="card project">
-
-            <div class="project-icon">
+            <div class="project-preview calculator-preview">
                 🧮
             </div>
 
-            <h3>
-                Smart Calculator
-            </h3>
+            <div class="project-content">
 
-            <p>
-                A simple calculator project
-                built with HTML, CSS and
-                JavaScript.
-            </p>
+                <span class="project-tag">
+                    HTML • CSS • JavaScript
+                </span>
 
-            <a href="calculator.html" class="btn">
-    View Project ↗<div class="project-buttons">
-    <a href="calculator.html" class="btn">
-        🚀 View Project
-    </a>
+                <h3>Smart Calculator</h3>
 
-    <a
-        href="https://github.com/paswan930/mywebsite"
-        class="btn"
-        target="_blank"
-        rel="noopener"
-    >
-        🐙 View Code
-    </a>
-</div>
-</a>
+                <p>
+                    A clean and responsive calculator for
+                    performing everyday mathematical
+                    calculations with an easy-to-use interface.
+                </p>
+
+                <div class="project-buttons">
+
+                    <a href="calculator.html" class="btn">
+                        🚀 View Project
+                    </a>
+
+                    <a
+                        href="https://github.com/paswan930/mywebsite"
+                        class="btn"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        🐙 View Code
+                    </a>
+
+                </div>
+
+            </div>
 
         </div>
 
 
-        <div class="card project">
+        <!-- Note Keeper -->
+        <div class="project-card">
 
-            <div class="project-icon">
+            <div class="project-preview notes-preview">
                 📝
             </div>
 
-            <h3>
-                Note Keeper
-            </h3>
+            <div class="project-content">
 
-            <p>
-                A simple notes application
-                for creating and managing
-                notes.
-            </p>
+                <span class="project-tag">
+                    HTML • CSS • JavaScript
+                </span>
 
-            <a href="notes.html" class="btn">
-                View Project ↗<div class="project-buttons">
-    <a href="notes.html" class="btn">
-        🚀 View Project
-    </a>
+                <h3>Note Keeper</h3>
 
-    <a
-        href="https://github.com/paswan930/mywebsite"
-        class="btn"
-        target="_blank"
-        rel="noopener"
-    >
-        🐙 View Code
-    </a>
-</div>
-            </a>
+                <p>
+                    A simple note-taking app that lets users
+                    create and delete notes. Notes are saved
+                    in the browser using local storage.
+                </p>
+
+                <div class="project-buttons">
+
+                    <a href="notes.html" class="btn">
+                        🚀 View Project
+                    </a>
+
+                    <a
+                        href="https://github.com/paswan930/mywebsite"
+                        class="btn"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        🐙 View Code
+                    </a>
+
+                </div>
+
+            </div>
 
         </div>
 
 
-        <div class="card project">
+        <!-- Quiz -->
+        <div class="project-card">
 
-            <div class="project-icon">
+            <div class="project-preview quiz-preview">
                 ❓
             </div>
 
-            <h3>
-                Quiz App
-            </h3>
+            <div class="project-content">
 
-            <p>
-                An interactive quiz project
-                for testing knowledge.
-            </p>
+                <span class="project-tag">
+                    HTML • CSS • JavaScript
+                </span>
 
-            <a href="quiz.html" class="btn">
-                View Project ↗<div class="project-buttons">
-    <a href="quiz.html" class="btn">
-        🚀 View Project
-    </a>
+                <h3>Quiz App</h3>
 
-    <a
-        href="https://github.com/paswan930/mywebsite"
-        class="btn"
-        target="_blank"
-        rel="noopener"
-    >
-        🐙 View Code
-    </a>
-</div>
-            </a>
+                <p>
+                    An interactive quiz application with
+                    multiple-choice questions, instant answer
+                    feedback, score tracking and restart option.
+                </p>
+
+                <div class="project-buttons">
+
+                    <a href="quiz.html" class="btn">
+                        🚀 View Project
+                    </a>
+
+                    <a
+                        href="https://github.com/paswan930/mywebsite"
+                        class="btn"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        🐙 View Code
+                    </a>
+
+                </div>
+
+            </div>
 
         </div>
 
